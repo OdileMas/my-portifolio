@@ -1,0 +1,97 @@
+/* 🌟 CONTACT SECTION DESIGN 🌟 */
+
+.contact-section {
+  background: linear-gradient(to bottom right, #f9fbff, #eef6ff);
+  text-align: center;
+  padding: 100px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-section h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e40af;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.contact-section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #2563eb;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.contact-text {
+  color: #374151;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* FORM STYLING */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 2px solid #d1d5db; /* gray-300 */
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* BUTTON */
+.contact-form button {
+  padding: 15px 25px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #1e40af;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-section h2 {
+    font-size: 2.2rem;
+  }
+  .contact-text {
+    font-size: 1rem;
+  }
+}
