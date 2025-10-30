@@ -1,46 +1,85 @@
-import React from "react";
-import "./About.css";
+import React from 'react';
+import './About.css';
 
-const About = () => {
+function About() {
   return (
-    <section
-      id="about"
-      className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-white to-blue-50 px-6 md:px-16 lg:px-32 py-16"
-    >
-
-      {/* About Content Box */}
-      <div className="bg-white shadow-xl rounded-2xl p-8 md:p-12 max-w-4xl text-center border-t-4 border-blue-600">
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-          Hi, I’m <span className="font-semibold text-blue-700">Masengesho Odile</span>,
-          a dedicated <span className="font-semibold text-gray-900">Computer and Software Engineering student</span> at the
-          <span className="text-blue-600 font-medium"> University of Rwanda</span>. I’m passionate about building
-          <span className="text-blue-600 font-medium"> creative and efficient digital solutions</span> that make a difference.
-        </p>
-<br />
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-          My main focus is on <span className="font-medium text-blue-700">front-end development</span> using
-          modern technologies like <span className="font-medium text-blue-700">React</span>, <span className="font-medium text-blue-700">JavaScript</span>, and <span className="font-medium text-blue-700">Flutter</span>.
-          I’m also learning <span className="font-medium text-blue-700">backend development</span> with
-          <span className="font-medium text-blue-700"> Node.js</span> and <span className="font-medium text-blue-700">Spring Boot (Java)</span>.
-        </p>
-
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-          I’ve worked on impactful projects like <span className="font-semibold text-blue-700">Smart Agro Boost</span> — a mobile app connecting farmers to markets — and
-          <span className="font-semibold text-blue-700"> DocuFlow</span>, a document management system. 
-          These experiences helped me combine creativity with technical skills to solve real-world challenges.
-        </p><br />
-
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
-          I’m continuously learning, exploring new technologies, and improving my craft. I’m currently seeking an
-          <span className="font-semibold text-blue-700"> internship or junior developer role</span> to grow professionally and contribute to impactful projects.
-        </p>
-
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-          Outside of coding, I love exploring UI design, reading about emerging tech, and collaborating on innovative ideas.
-        </p>
+    <section id="about" className="about-section">
+      <div className="about-container">
+        <h2 className="section-title">
+          About <span className="gradient-text">Me</span>
+        </h2>
+        
+        <div className="about-content">
+          <div className="about-image">
+            <div className="image-wrapper">
+              <div className="profile-img">
+                👨‍💻
+              </div>
+              <div className="glow-effect"></div>
+            </div>
+          </div>
+          
+          <div className="about-text">
+            <h3>Hello! I'm a Software Engineering Student</h3>
+            <p>
+              I'm currently in my <strong>4th year</strong> studying Computer and Software Engineering, 
+              where I've developed a passion for creating innovative solutions that solve real-world problems.
+            </p>
+            <p>
+              My journey in technology started with curiosity about how things work, and has evolved 
+              into a deep commitment to building applications that make a difference. I specialize in 
+              <strong> full-stack development</strong>, with expertise in modern web technologies and a 
+              growing interest in <strong>artificial intelligence</strong> and <strong>cloud computing</strong>.
+            </p>
+            <p>
+              When I'm not coding, you can find me exploring new technologies, contributing to open-source 
+              projects, or sharing knowledge with fellow developers. I believe in continuous learning and 
+              staying updated with the latest industry trends.
+            </p>
+            
+            <div className="about-stats">
+              <div className="stat-item">
+                <h4>50+</h4>
+                <p>Projects Completed</p>
+              </div>
+              <div className="stat-item">
+                <h4>15+</h4>
+                <p>Technologies</p>
+              </div>
+              <div className="stat-item">
+                <h4>4</h4>
+                <p>Years Experience</p>
+              </div>
+            </div>
+            
+            <div className="about-highlights">
+              <div className="highlight-item">
+                <span className="highlight-icon">🎓</span>
+                <div>
+                  <h4>Education</h4>
+                  <p>BSc in Computer & Software Engineering</p>
+                </div>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">💼</span>
+                <div>
+                  <h4>Focus Areas</h4>
+                  <p>Full-Stack Development, AI/ML, Cloud</p>
+                </div>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">🚀</span>
+                <div>
+                  <h4>Goal</h4>
+                  <p>Building impactful tech solutions</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
+}
 
 export default About;

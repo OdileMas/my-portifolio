@@ -58,7 +58,7 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-text">
           <h1 className="hero-title">
-            Hi, I'm <span className="gradient-text">Your Name</span>
+            Hi, I'm <span className="gradient-text">Odile</span>
           </h1>
           <div className="typing-container">
             <h2 className="hero-subtitle">
