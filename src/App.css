@@ -1,77 +1,99 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Global Utility Classes that map to our variables */
+.App {
+  min-height: 100vh;
+  position: relative;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05) 0%, transparent 20%);
 }
 
-.App {
-  background-color: #0a0a0a;
-  color: white;
-  min-height: 100vh;
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .section {
   min-height: 100vh;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 100px 50px;
+  position: relative;
+}
+
+/* Typography Utilities */
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
   text-align: center;
+  font-weight: 700;
 }
 
-.section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
-.section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #00f5ff;
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 242, 254, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.section p {
-  font-size: 1.2rem;
-  opacity: 0.8;
-  max-width: 600px;
+/* Button Styles */
+.btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
 }
 
-
-#home {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--bg-dark);
 }
 
-#about {
-  background: #0a0a0a;
+.btn-primary:hover {
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: translateY(-2px);
 }
 
-#skills {
-  background: linear-gradient(135deg, #0a0a0a 0%, #16213e 100%);
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
 }
 
-#projects {
-  background: #0a0a0a;
+.btn-outline:hover {
+  background: rgba(0, 242, 254, 0.1);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
 }
 
-#contact {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .section {
-    padding: 80px 20px;
-  }
-
-  .section h1 {
-    font-size: 2rem;
-  }
-
-  .section h2 {
-    font-size: 1.8rem;
-  }
-
-  .section p {
-    font-size: 1rem;
+  .section-title {
+    font-size: 2.5rem;
   }
 }

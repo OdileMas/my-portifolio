@@ -1,79 +1,89 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 
 function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className="about-section">
-      <div className="about-container">
-        <h2 className="section-title">
-          About <span className="gradient-text">Me</span>
-        </h2>
-        
+    <section id="about" className="section about-section" ref={sectionRef}>
+      <div className={`about-container ${isVisible ? 'animate' : ''}`}>
+        <div className="section-header">
+          <h2 className="section-title">
+            About <span className="gradient-text">Me</span>
+          </h2>
+          <div className="section-line"></div>
+        </div>
+
         <div className="about-content">
-          <div className="about-image">
-            <div className="image-wrapper">
-              <div className="profile-img">
-                👨‍💻
+          <div className="about-image-container">
+            <div className="about-image-card">
+              <div className="image-placeholder">
+                <span className="profile-emoji">👩‍💻</span>
               </div>
-              <div className="glow-effect"></div>
+              <div className="card-backdrop"></div>
+            </div>
+            <div className="experience-badge">
+              <span className="years">4+</span>
+              <span className="text">Years<br />Experience</span>
             </div>
           </div>
-          
+
           <div className="about-text">
-            <h3>Hello! I'm a Software Engineering Student</h3>
-            <p>
-              I'm currently in my <strong>4th year</strong> studying Computer and Software Engineering, 
-              where I've developed a passion for creating innovative solutions that solve real-world problems.
+            <h3 className="about-heading">Software Engineering Student & <span className="highlight">Creative Developer</span></h3>
+
+            <p className="about-description">
+              I'm currently in my <strong className="highlight">4th year</strong> studying Computer and Software Engineering.
+              My journey is defined by a passion for solving complex problems through elegant code.
             </p>
-            <p>
-              My journey in technology started with curiosity about how things work, and has evolved 
-              into a deep commitment to building applications that make a difference. I specialize in 
-              <strong> full-stack development</strong>, with expertise in modern web technologies and a 
-              growing interest in <strong>artificial intelligence</strong> and <strong>cloud computing</strong>.
+            <p className="about-description">
+              I specialize in <strong className="highlight">Full-Stack Development</strong>, crafting seamless digital experiences form the database to the user interface.
+              I'm constantly exploring new technologies in <strong>AI/ML</strong> and <strong>Cloud Computing</strong> to stay ahead of the curve.
             </p>
-            <p>
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source 
-              projects, or sharing knowledge with fellow developers. I believe in continuous learning and 
-              staying updated with the latest industry trends.
-            </p>
-            
-            <div className="about-stats">
-              <div className="stat-item">
-                <h4>50+</h4>
-                <p>Projects Completed</p>
+
+            <div className="about-stats-grid">
+              <div className="stat-card">
+                <div className="stat-number">50+</div>
+                <div className="stat-label">Projects Completed</div>
               </div>
-              <div className="stat-item">
-                <h4>15+</h4>
-                <p>Technologies</p>
+              <div className="stat-card">
+                <div className="stat-number">15+</div>
+                <div className="stat-label">technologies mastered</div>
               </div>
-              <div className="stat-item">
-                <h4>4</h4>
-                <p>Years Experience</p>
+              <div className="stat-card">
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Commitment</div>
               </div>
             </div>
-            
-            <div className="about-highlights">
-              <div className="highlight-item">
-                <span className="highlight-icon">🎓</span>
-                <div>
-                  <h4>Education</h4>
-                  <p>BSc in Computer & Software Engineering</p>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-icon">💼</span>
-                <div>
-                  <h4>Focus Areas</h4>
-                  <p>Full-Stack Development, AI/ML, Cloud</p>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <span className="highlight-icon">🚀</span>
-                <div>
-                  <h4>Goal</h4>
-                  <p>Building impactful tech solutions</p>
-                </div>
-              </div>
+
+            <div className="about-actions">
+              <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView()}>
+                Let's Talk
+              </button>
+              <button className="btn btn-outline" onClick={() => window.open('https://github.com/OdileMas', '_blank')}>
+                View GitHub
+              </button>
             </div>
           </div>
         </div>

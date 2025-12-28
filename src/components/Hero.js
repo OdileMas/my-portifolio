@@ -10,8 +10,8 @@ function Hero() {
   const titles = [
     'Software Engineer',
     'Full Stack Developer',
-    'Problem Solver',
-    'Tech Enthusiast'
+    'Creative Designer',
+    'Problem Solver'
   ];
 
   useEffect(() => {
@@ -37,17 +37,10 @@ function Hero() {
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed, titles]);
+  }, [text, isDeleting, loopNum, typingSpeed]);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -55,51 +48,48 @@ function Hero() {
 
   return (
     <section id="home" className="hero">
+      <div className="hero-background">
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+      </div>
+
       <div className="hero-content">
-        <div className="hero-text">
-          <h1 className="hero-title">
-            Hi, I'm <span className="gradient-text">Odile</span>
+        <div className="hero-text-container">
+          <h2 className="greeting fade-in">Hello, I'm</h2>
+          <h1 className="name fade-in-up">
+            <span className="gradient-text">Odile</span> Mas
           </h1>
-          <div className="typing-container">
-            <h2 className="hero-subtitle">
-              I'm a <span className="typing-text">{text}</span>
-              <span className="cursor">|</span>
-            </h2>
+
+          <div className="typing-wrapper fade-in-up delay-1">
+            <span className="static-text">I am a </span>
+            <span className="dynamic-text">{text}</span>
+            <span className="cursor">|</span>
           </div>
-          <p className="hero-description">
-           A student pursuing bachelor's degree in Computer & Software Engineering  | Year 4
-            <br />
-            Passionate and consistent about building innovative solutions that make a difference in real world.<br />
-            I like to learn new things and get to have new skills so that i can be competitive on the market.
+
+          <p className="description fade-in-up delay-2">
+            A passionate Computer & Software Engineering student committed to building innovative,
+            user-centric solutions that bridge the gap between complex problems and elegant experiences.
           </p>
-          <div className="hero-buttons">
-            <button className="btn btn-primary" onClick={scrollToProjects}>
+
+          <div className="cta-container fade-in-up delay-3">
+            <button className="btn btn-primary" onClick={() => scrollToSection('projects')}>
               View My Work
             </button>
-            <button className="btn btn-secondary" onClick={scrollToContact}>
-              Get In Touch
+            <button className="btn btn-outline" onClick={() => scrollToSection('contact')}>
+              Contact Me
             </button>
           </div>
         </div>
-        
-        <div className="hero-social">
-          <a href="https://github.com/dashboard" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <span>GitHub</span>
-          </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <span>Twitter</span>
-          </a>
+
+        <div className="hero-visual fade-in delay-2">
+          {/* Abstract geometric representation or 3D element could go here */}
+          <div className="glass-circle"></div>
         </div>
       </div>
 
-      <div className="scroll-indicator">
-        <div className="mouse">
-          <div className="wheel"></div>
-        </div>
-        <p>Scroll Down</p>
+      <div className="scroll-down fade-in delay-4" onClick={() => scrollToSection('about')}>
+        <span>Scroll Down</span>
+        <div className="arrow-down"></div>
       </div>
     </section>
   );

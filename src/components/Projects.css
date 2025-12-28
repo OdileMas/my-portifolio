@@ -1,116 +1,79 @@
 .projects-section {
-  min-height: 100vh;
-  padding: 100px 50px;
-  background: #0a0a0a;
-  position: relative;
-  overflow: hidden;
-}
-
-.projects-section::before {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 245, 255, 0.03) 0%, transparent 70%);
-  bottom: -300px;
-  right: -300px;
+  background: var(--bg-dark);
 }
 
 .projects-container {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 
-.filter-buttons {
+.filter-container {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 50px;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease 0.3s both;
+  margin-bottom: 50px;
 }
 
 .filter-btn {
-  padding: 12px 30px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(0, 245, 255, 0.2);
-  border-radius: 25px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
-  font-weight: 500;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 8px 20px;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
 }
 
-.filter-btn:hover {
-  background: rgba(0, 245, 255, 0.1);
-  border-color: rgba(0, 245, 255, 0.5);
-  color: #00f5ff;
-  transform: translateY(-2px);
-}
-
+.filter-btn:hover,
 .filter-btn.active {
-  background: linear-gradient(45deg, #00f5ff, #ff00ff);
-  border-color: transparent;
-  color: #0a0a0a;
-  font-weight: 600;
+  background: var(--primary);
+  color: var(--bg-dark);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
-  animation: fadeInUp 0.8s ease 0.4s both;
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
+  padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(0, 245, 255, 0.1);
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.6s ease both;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(0, 245, 255, 0.3);
-  box-shadow: 0 20px 50px rgba(0, 245, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.project-image {
-  width: 100%;
-  height: 250px;
-  background: linear-gradient(135deg, #00f5ff, #ff00ff);
+.card-image {
+  height: 200px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
 
-.project-emoji {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.emoji-display {
   font-size: 5rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
-.project-card:hover .project-emoji {
+.project-card:hover .emoji-display {
   transform: scale(1.1);
 }
 
-.project-overlay {
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,124 +81,43 @@
   transition: opacity 0.3s ease;
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .overlay {
   opacity: 1;
 }
 
-.project-links {
-  display: flex;
-  gap: 20px;
-}
-
-.project-link {
-  padding: 12px 25px;
-  background: rgba(0, 245, 255, 0.1);
-  border: 2px solid #00f5ff;
-  border-radius: 25px;
-  color: #00f5ff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  transform: translateY(20px);
-}
-
-.project-card:hover .project-link {
-  transform: translateY(0);
-}
-
-.project-link:hover {
-  background: #00f5ff;
-  color: #0a0a0a;
-  transform: scale(1.05);
-}
-
-.project-content {
+.card-content {
   padding: 25px;
-}
-
-.project-content h3 {
-  font-size: 1.5rem;
-  color: #00f5ff;
-  margin-bottom: 15px;
-}
-
-.project-content p {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 20px;
-  min-height: 60px;
-}
-
-.project-tags {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+}
+
+.card-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.card-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .tag {
-  padding: 6px 15px;
-  background: rgba(0, 245, 255, 0.1);
-  border: 1px solid rgba(0, 245, 255, 0.3);
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--primary);
+  padding: 4px 12px;
   border-radius: 15px;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
-
-.tag:hover {
-  background: rgba(0, 245, 255, 0.2);
-  border-color: rgba(0, 245, 255, 0.5);
-  transform: translateY(-2px);
-}
-
-.no-projects {
-  text-align: center;
-  padding: 60px 20px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1.2rem;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .projects-section {
-    padding: 80px 20px;
-  }
-}
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .filter-buttons {
-    gap: 10px;
-  }
-
-  .filter-btn {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-
-  .project-image {
-    height: 200px;
-  }
-
-  .project-emoji {
-    font-size: 4rem;
-  }
-
-  .project-content h3 {
-    font-size: 1.3rem;
-  }
