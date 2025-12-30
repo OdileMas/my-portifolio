@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Hero.css';
+import profileImage from '../assets/mee.jpeg';
 
 function Hero() {
   const [text, setText] = useState('');
@@ -82,8 +83,9 @@ function Hero() {
         </div>
 
         <div className="hero-visual fade-in delay-2">
-          {/* Abstract geometric representation or 3D element could go here */}
-          <div className="glass-circle"></div>
+          <div className="profile-image-container">
+            <img src={profileImage} alt="Odile Mas" className="profile-image" />
+          </div>
         </div>
       </div>
 

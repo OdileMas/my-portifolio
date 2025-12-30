@@ -64,11 +64,11 @@ function About() {
 
             <div className="about-stats-grid">
               <div className="stat-card">
-                <div className="stat-number">50+</div>
+                <div className="stat-number">10+</div>
                 <div className="stat-label">Projects Completed</div>
               </div>
               <div className="stat-card">
-                <div className="stat-number">15+</div>
+                <div className="stat-number">8+</div>
                 <div className="stat-label">technologies mastered</div>
               </div>
               <div className="stat-card">
