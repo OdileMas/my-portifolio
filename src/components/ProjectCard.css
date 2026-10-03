@@ -1,0 +1,175 @@
+.pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px;
+  border-radius: var(--radius-card);
+  background: var(--card);
+  border: 1px solid var(--line);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 50px -30px rgba(0, 0, 0, 0.3);
+}
+
+.pcard__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--graphite);
+}
+
+.pcard__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 1s var(--ease);
+}
+
+.pcard:hover .pcard__media img {
+  transform: scale(1.04);
+}
+
+/* typographic cover for projects without screenshots */
+.pcard__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 22px;
+  color: var(--on-dark);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(224, 82, 43, 0.35), transparent 45%),
+    linear-gradient(160deg, #2a2b2f, #141517);
+}
+
+.pcard__cover-title {
+  font-size: clamp(26px, 2.6vw, 36px);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.pcard__cover-stack {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--on-dark-2);
+}
+
+/* frosted circular arrow, like the inspiration */
+.pcard__open {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.pcard__open svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pcard:hover .pcard__open {
+  opacity: 1;
+  transform: none;
+}
+
+.pcard__live {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pcard__live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2f9e57;
+}
+
+.pcard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 6px 8px 10px;
+  flex: 1;
+}
+
+.pcard__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.pcard__title {
+  font-size: clamp(22px, 2vw, 27px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.pcard__summary {
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.pcard__tags .chip {
+  font-size: 13px;
+  padding: 4px 11px;
+}
+
+/* touch screens: always show the arrow hint, no hover lift */
+@media (hover: none) {
+  .pcard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .pcard__open {
+    opacity: 1;
+    transform: scale(0.8);
+    top: auto;
+    left: auto;
+    right: 12px;
+    bottom: 12px;
+    margin: 0;
+    width: 52px;
+    height: 52px;
+  }
+}

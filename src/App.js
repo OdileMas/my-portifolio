@@ -1,46 +1,26 @@
-import { useEffect } from 'react';
-import './App.css';
-import Cursor from './components/Cursor';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Resume from './components/Resume';
-import Contact from './components/Contact';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
+import Resume from './pages/Resume';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function App() {
-  // fade sections in as they scroll into view
-  useEffect(() => {
-    const items = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    items.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <>
-      <Cursor />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Resume />
-        <Contact />
-      </main>
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<ProjectDetail />} />
+        <Route path="resume" element={<Resume />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
