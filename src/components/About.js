@@ -1,91 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './About.css';
+import { toolkit, GITHUB } from '../data';
 
 function About() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section id="about" className="section about-section" ref={sectionRef}>
-      <div className={`about-container ${isVisible ? 'animate' : ''}`}>
-        <div className="section-header">
-          <h2 className="section-title">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <div className="section-line"></div>
-        </div>
+    <section className="section about tone-pale" id="about">
+      <div className="wrap">
+        <p className="eyebrow reveal">01 — About</p>
 
-        <div className="about-content">
-          <div className="about-image-container">
-            <div className="about-image-card">
-              <div className="image-placeholder">
-                <span className="profile-emoji">👩‍💻</span>
-              </div>
-              <div className="card-backdrop"></div>
-            </div>
-            <div className="experience-badge">
-              <span className="years">4+</span>
-              <span className="text">Years<br />Experience</span>
-            </div>
+        <h2 className="display about__statement reveal">
+          A software engineer who likes the whole picture — from the <em>data model</em> to the
+          last pixel on the screen.
+        </h2>
+
+        <div className="about__grid">
+          <div className="about__bio reveal">
+            <p>
+              I’m finishing my BSc in Software Engineering at the University of Rwanda, and most of
+              what I know I’ve learned by shipping: a service-delivery system for the City of Kigali,
+              a community services website at IDA Technology, and now product work as a developer
+              intern at Travelis Rwanda.
+            </p>
+            <p>
+              Lately my focus has been the backend. Through Solvit Africa’s Django programme I built
+              AgriConnect, which lets farmers sell directly to buyers without middlemen, and a school
+              management system for students, teachers, attendance and exams.
+            </p>
+            <p>
+              I also built iHugure, a small platform encouraging more girls to step into tech —
+              something I care about beyond the code.
+            </p>
+            <a className="link" href={GITHUB} target="_blank" rel="noopener noreferrer">
+              See my GitHub ↗
+            </a>
           </div>
 
-          <div className="about-text">
-            <h3 className="about-heading">Software Engineering Student & <span className="highlight">Creative Developer</span></h3>
-
-            <p className="about-description">
-              I'm currently in my <strong className="highlight">4th year</strong> studying Computer and Software Engineering.
-              My journey is defined by a passion for solving complex problems through elegant code.
-            </p>
-            <p className="about-description">
-              I specialize in <strong className="highlight">Full-Stack Development</strong>, crafting seamless digital experiences form the database to the user interface.
-              I'm constantly exploring new technologies in <strong>AI/ML</strong> and <strong>Cloud Computing</strong> to stay ahead of the curve.
-            </p>
-
-            <div className="about-stats-grid">
-              <div className="stat-card">
-                <div className="stat-number">10+</div>
-                <div className="stat-label">Projects Completed</div>
+          <dl className="about__toolkit reveal">
+            {toolkit.map((group) => (
+              <div key={group.label} className="about__tool">
+                <dt>{group.label}</dt>
+                <dd>{group.items.join(' · ')}</dd>
               </div>
-              <div className="stat-card">
-                <div className="stat-number">8+</div>
-                <div className="stat-label">technologies mastered</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-number">24/7</div>
-                <div className="stat-label">Commitment</div>
-              </div>
-            </div>
-
-            <div className="about-actions">
-              <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView()}>
-                Let's Talk
-              </button>
-              <button className="btn btn-outline" onClick={() => window.open('https://github.com/OdileMas', '_blank')}>
-                View GitHub
-              </button>
-            </div>
-          </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

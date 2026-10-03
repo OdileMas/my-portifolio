@@ -1,109 +1,83 @@
-import React, { useState } from 'react';
-import './Projects.css';
+import { featured, more, GITHUB } from '../data';
+import usePointerTilt from '../usePointerTilt';
 
 function Projects() {
-  const [filter, setFilter] = useState('all');
-
-  const projects = [
-    {
-      id: 1,
-      title: 'The Locator',
-      description: 'Full-stack e-commerce solution with payment integration and analytics.',
-      image: '🛒',
-      category: 'fullstack',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      link: 'https://github.com/OdileMas/TheLocator'
-    },
-    {
-      id: 2,
-      title: 'iHugure AI',
-      description: 'Intelligent chatbot for customer support automation.',
-      image: '🤖',
-      category: 'ai',
-      tags: ['Python', 'NLP', 'Flask'],
-      link: 'https://github.com/OdileMas/iHugure'
-    },
-    {
-      id: 3,
-      title: 'Farmer Trading',
-      description: 'Cross-platform mobile app for trading agricultural products.',
-      image: '🌾',
-      category: 'mobile',
-      tags: ['React Native', 'Firebase'],
-      link: 'https://github.com/OdileMas/farmer_trading_app'
-    },
-    {
-      id: 4,
-      title: 'Cafe Locator',
-      description: 'Blockchain-based voting and location platform.',
-      image: '☕',
-      category: 'blockchain',
-      tags: ['Solidity', 'Web3.js'],
-      link: 'https://github.com/OdileMas/CafeLocator-Rwanda'
-    },
-    {
-      id: 5,
-      title: 'City Plus',
-      description: 'Data visualization dashboard for urban planning.',
-      image: '🏙️',
-      category: 'fullstack',
-      tags: ['Vue.js', 'D3.js'],
-      link: 'https://github.com/OdileMas/city-plus'
-    },
-    {
-      id: 6,
-      title: 'Finance Tracker',
-      description: 'Personal finance management with real-time updates.',
-      image: '💰',
-      category: 'fullstack',
-      tags: ['React', 'Firebase'],
-      link: 'https://github.com/OdileMas/financce-tracker'
-    }
-  ];
-
-  const categories = ['all', 'fullstack', 'ai', 'mobile', 'blockchain'];
-
-  const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+  const tilt = usePointerTilt();
 
   return (
-    <section id="projects" className="section projects-section">
-      <div className="projects-container">
-        <div className="section-header">
-          <h2 className="section-title">Featured <span className="gradient-text">Projects</span></h2>
+    <section className="section work tone-stone" id="work">
+      <div className="wrap">
+        <div className="section__head">
+          <p className="eyebrow reveal">03 — Selected work</p>
+          <h2 className="display section__title reveal">
+            Things I’ve <em>built</em>
+          </h2>
         </div>
 
-        <div className="filter-container">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              className={`filter-btn ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          ))}
-        </div>
+        <div className="work__featured">
+          {featured.map((p, i) => (
+            <article key={p.title} className={`case reveal ${i % 2 ? 'case--flip' : ''}`}>
+              <a
+                className="case__media"
+                href={p.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${p.title} live demo`}
+                data-cursor="View"
+                {...tilt}
+              >
+                <div className="browser">
+                  <div className="browser__bar">
+                    <i />
+                    <i />
+                    <i />
+                    <span>{p.live.replace('https://', '')}</span>
+                  </div>
+                  <img src={p.image} alt={`Screenshot of ${p.title}`} loading="lazy" />
+                </div>
+              </a>
 
-        <div className="projects-grid">
-          {filtered.map((project) => (
-            <div key={project.id} className="glass-card project-card">
-              <div className="card-image">
-                <div className="emoji-display">{project.image}</div>
-                <div className="overlay">
-                  <a href={project.link} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
-                    View Code
+              <div className="case__body">
+                <p className="case__index">0{i + 1}</p>
+                <p className="case__kind">
+                  {p.kind} · {p.year}
+                </p>
+                <h3 className="display case__title">{p.title}</h3>
+                <p className="case__desc">{p.description}</p>
+                <p className="case__stack">{p.stack.join('  /  ')}</p>
+                <div className="case__links">
+                  <a className="link" href={p.live} target="_blank" rel="noopener noreferrer">
+                    Live demo ↗
+                  </a>
+                  <a className="link" href={p.code} target="_blank" rel="noopener noreferrer">
+                    Source code ↗
                   </a>
                 </div>
               </div>
-              <div className="card-content">
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="tags">
-                  {project.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
-                </div>
-              </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        <div className="more">
+          <h3 className="more__heading reveal">More on GitHub</h3>
+          <ul className="more__list">
+            {more.map((p) => (
+              <li key={p.title} className="reveal">
+                <a href={p.code} target="_blank" rel="noopener noreferrer" className="more__row">
+                  <span className="more__title">
+                    {p.title}
+                    <small>{p.note}</small>
+                  </span>
+                  <span className="more__desc">{p.description}</span>
+                  <span className="more__stack">{p.stack.join(' · ')}</span>
+                  <span className="more__arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a className="btn btn-ghost more__all reveal" href={GITHUB} target="_blank" rel="noopener noreferrer">
+            Visit my GitHub <span className="arrow">→</span>
+          </a>
         </div>
       </div>
     </section>

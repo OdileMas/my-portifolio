@@ -1,97 +1,81 @@
-import { useState, useEffect } from 'react';
-import './Hero.css';
-import profileImage from '../assets/mee.jpeg';
+import portrait from '../assets/odile.jpeg';
+import { CV_URL, CV_FILENAME } from '../data';
+import usePointerTilt from '../usePointerTilt';
+
+const ribbon = ['Python', 'Django', 'React', 'REST APIs', 'PostgreSQL', 'Node.js', 'FastAPI', 'MongoDB', 'Flutter'];
 
 function Hero() {
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
-
-  const titles = [
-    'Software Engineer',
-    'Full Stack Developer',
-    'Creative Designer',
-    'Problem Solver'
-  ];
-
-  useEffect(() => {
-    const handleTyping = () => {
-      const current = loopNum % titles.length;
-      const fullText = titles[current];
-
-      setText(
-        isDeleting
-          ? fullText.substring(0, text.length - 1)
-          : fullText.substring(0, text.length + 1)
-      );
-
-      setTypingSpeed(isDeleting ? 50 : 150);
-
-      if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed]);
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const tilt = usePointerTilt();
 
   return (
-    <section id="home" className="hero">
-      <div className="hero-background">
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
-      </div>
+    <section className="hero tone-stone" id="top" {...tilt}>
+      <div className="wrap hero__grid">
+        <div className="hero__text">
+          <p className="eyebrow hero__rise">Full-Stack Developer · Kigali, Rwanda</p>
 
-      <div className="hero-content">
-        <div className="hero-text-container">
-          <h2 className="greeting fade-in">Hello, I'm</h2>
-          <h1 className="name fade-in-up">
-            <span className="gradient-text">Odile</span> Mas
+          <h1 className="display hero__name hero__rise" style={{ animationDelay: '.1s' }}>
+            Odile
+            <br />
+            <em>Masengesho</em>
           </h1>
 
-          <div className="typing-wrapper fade-in-up delay-1">
-            <span className="static-text">I am a </span>
-            <span className="dynamic-text">{text}</span>
-            <span className="cursor">|</span>
-          </div>
-
-          <p className="description fade-in-up delay-2">
-            A passionate Computer & Software Engineering student committed to building innovative,
-            user-centric solutions that bridge the gap between complex problems and elegant experiences.
+          <p className="hero__lede hero__rise" style={{ animationDelay: '.25s' }}>
+            I build web applications from the database up — Python and Django on the server, React in
+            the browser — and I care about the small details people actually touch.
           </p>
 
-          <div className="cta-container fade-in-up delay-3">
-            <button className="btn btn-primary" onClick={() => scrollToSection('projects')}>
-              View My Work
-            </button>
-            <button className="btn btn-outline" onClick={() => scrollToSection('contact')}>
-              Contact Me
-            </button>
+          <p className="hero__status hero__rise" style={{ animationDelay: '.35s' }}>
+            <span className="dot" /> Currently Developer Intern at <strong>Travelis Rwanda</strong>
+          </p>
+
+          <div className="hero__actions hero__rise" style={{ animationDelay: '.45s' }}>
+            <a href="#work" className="btn btn-solid">
+              Selected work <span className="arrow">→</span>
+            </a>
+            <a href={CV_URL} download={CV_FILENAME} className="btn btn-ghost">
+              Download CV
+            </a>
           </div>
         </div>
 
-        <div className="hero-visual fade-in delay-2">
-          <div className="profile-image-container">
-            <img src={profileImage} alt="Odile Mas" className="profile-image" />
+        <figure className="hero__portrait">
+          <div className="hero__frame">
+            <span className="hero__ornament" aria-hidden="true" />
+            <img src={portrait} alt="Portrait of Odile Masengesho" fetchPriority="high" />
           </div>
-        </div>
+          <figcaption>
+            <span>Odile Masengesho</span>
+            <span>Kigali, 2026</span>
+          </figcaption>
+        </figure>
       </div>
 
-      <div className="scroll-down fade-in delay-4" onClick={() => scrollToSection('about')}>
-        <span>Scroll Down</span>
-        <div className="arrow-down"></div>
+      <div className="wrap">
+        <ul className="hero__facts">
+          <li className="hero__rise" style={{ animationDelay: '.55s' }}>
+            <span>Now</span>
+            Developer Intern, Travelis Rwanda
+          </li>
+          <li className="hero__rise" style={{ animationDelay: '.65s' }}>
+            <span>Training</span>
+            Django Full-Stack, Solvit Africa
+          </li>
+          <li className="hero__rise" style={{ animationDelay: '.75s' }}>
+            <span>Studying</span>
+            BSc Software Engineering, UR
+          </li>
+        </ul>
+      </div>
+
+      <div className="ribbon" aria-hidden="true">
+        <div className="ribbon__track">
+          {[...ribbon, ...ribbon].map((word, i) => (
+            <span key={i}>
+              {word}
+              <i>✦</i>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
