@@ -35,11 +35,11 @@ function CodeCard() {
 function Hero() {
   return (
     <section className="panel panel--dark hero">
-      <div className="hero__photo">
-        <img src={portrait} alt="Odile Masengesho" fetchPriority="high" />
-      </div>
-
       <div className="wrap hero__inner">
+        <div className="hero__photo">
+          <img src={portrait} alt="Odile Masengesho" fetchPriority="high" />
+        </div>
+
         <div className="hero__copy">
           <p className="hero__badge hero-in">
             <span className="hero__dot" /> Open to junior developer roles

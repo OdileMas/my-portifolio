@@ -30,7 +30,10 @@
   border: 1px solid var(--line-strong);
   font-size: 15px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
 }
 
 .cform__topic input {
@@ -79,7 +82,9 @@
   font-size: 16px;
   line-height: 1.5;
   resize: vertical;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -150,10 +155,5 @@
 @media (max-width: 640px) {
   .cform__row {
     grid-template-columns: 1fr;
-  }
-
-  .cform__submit .pill {
-    width: 100%;
-    justify-content: space-between;
   }
 }

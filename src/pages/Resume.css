@@ -130,10 +130,3 @@
     max-width: min(340px, 84vw);
   }
 }
-
-@media (max-width: 520px) {
-  .resume-actions .pill {
-    flex: 1 1 100%;
-    justify-content: space-between;
-  }
-}

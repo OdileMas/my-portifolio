@@ -22,7 +22,9 @@
   border-radius: 50%;
   border: 1px solid var(--line-strong);
   transform: rotate(180deg);
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 .case-hero__back-icon svg {
@@ -79,11 +81,6 @@
 @media (max-width: 760px) {
   .case-meta {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .case-hero__actions .pill {
-    flex: 1 1 100%;
-    justify-content: space-between;
   }
 }
 
@@ -247,7 +244,9 @@
   border-radius: 50%;
   background: var(--ink);
   color: #fff;
-  transition: transform 0.5s var(--ease), background 0.4s;
+  transition:
+    transform 0.5s var(--ease),
+    background 0.4s;
 }
 
 .case-next__icon svg {
