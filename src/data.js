@@ -18,42 +18,159 @@ export const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_ID}`;
 
 export const stats = [
   { value: 6, suffix: '', label: 'Internships & programmes' },
-  { value: 10, suffix: '+', label: 'Projects built' },
-  { value: 4, suffix: '', label: 'Live deployments' },
+  { value: 11, suffix: '+', label: 'Projects built' },
+  { value: 5, suffix: '', label: 'Live deployments' },
   { value: 2026, suffix: '', label: 'BSc Software Eng. graduate', plain: true },
 ];
 
 export const services = [
   {
+    id: 'backend',
     title: 'Backend & APIs',
-    text: 'Django and FastAPI services with clean data models, REST APIs and the logic that keeps a product honest.',
-    tags: ['Django', 'FastAPI', 'PostgreSQL', 'REST'],
+    summary: 'Django and FastAPI services with clean data models, REST APIs and the logic that keeps a product honest.',
+    intro:
+      'I architect clean, resilient backends using Python (Django, FastAPI) and Node.js. My focus is on robust relational data modeling, query efficiency, secure authentication (JWT), and well-documented RESTful endpoints.',
+    cvRecommendation:
+      'Recommended in CV: Explore my backend architecture in AgriConnect (Solvit Africa) and production REST APIs developed for Travelis Rwanda Ltd.',
+    tags: ['Django', 'FastAPI', 'PostgreSQL', 'REST APIs', 'Node.js'],
   },
   {
+    id: 'frontend',
     title: 'Frontend',
-    text: 'Responsive React interfaces that feel calm and fast — dashboards, landing pages and multi-page sites.',
-    tags: ['React', 'Next.js', 'JavaScript', 'CSS'],
+    summary: 'Responsive React interfaces that feel calm and fast — dashboards, landing pages and multi-page sites.',
+    intro:
+      'I craft accessible, modern, mobile-first web applications using React, Next.js, and clean CSS. I emphasize visual hierarchy, smooth micro-interactions, and fast load times across every screen size.',
+    cvRecommendation:
+      'Recommended in CV: Review my production deliverables on NTD Build & Design Solutions and the Irondo ry’Umwuga surveillance dashboard.',
+    tags: ['React', 'Next.js', 'JavaScript', 'CSS', 'Figma'],
   },
   {
+    id: 'fullstack',
     title: 'Full-stack products',
-    text: 'Taking an idea from database to deployment: authentication, CRUD flows, admin dashboards and hosting.',
-    tags: ['Node.js', 'Express', 'MongoDB', 'Vercel'],
+    summary: 'Taking an idea from database to deployment: authentication, CRUD flows, admin dashboards and hosting.',
+    intro:
+      'From database schemas and business logic to responsive user interfaces and cloud deployment on Vercel/Docker, I deliver cohesive, maintainable full-stack products that solve real problems.',
+    cvRecommendation:
+      'Recommended in CV: Check out full-stack case studies including SecureVault Dashboard, AgriConnect, and Product CRUD.',
+    tags: ['Django + React', 'MERN Stack', 'PostgreSQL', 'MongoDB', 'Docker'],
   },
   {
+    id: 'mobile',
     title: 'Mobile',
-    text: 'Cross-platform apps with Flutter and React Native for people who live on their phones.',
-    tags: ['Flutter', 'Dart', 'React Native'],
+    summary: 'Cross-platform apps with Flutter and React Native for people who live on their phones.',
+    intro:
+      'I build fast, cross-platform mobile experiences with Flutter (Dart) and React Native, focusing on intuitive workflows, proximity-based matching, and offline-resilient UI state.',
+    cvRecommendation:
+      'Recommended in CV: Discover my current work on Fundi Mobile at Travelis Rwanda Ltd and Farmer Trading App.',
+    tags: ['Flutter', 'Dart', 'React Native', 'Geolocation', 'REST APIs'],
   },
 ];
+
+export const skillIntros = {
+  Django: {
+    category: 'Backend Framework',
+    intro: 'Odile’s core Python framework for architecting scalable, data-driven web services, robust ORM modeling, and secure REST APIs.',
+    cvRecommendation: 'See AgriConnect and Solvit Africa intensive Django program details in the updated CV.',
+  },
+  FastAPI: {
+    category: 'Backend Framework',
+    intro: 'High-performance Python API development with asynchronous endpoints and automated schema documentation.',
+    cvRecommendation: 'Check CV for backend API benchmarks and microservice projects.',
+  },
+  'Node.js': {
+    category: 'Backend Runtime',
+    intro: 'Event-driven server-side JavaScript runtime utilized for scalable REST services and dashboard backends.',
+    cvRecommendation: 'Refer to CV for SecureVault and full-stack MERN stack experience.',
+  },
+  Express: {
+    category: 'Backend Framework',
+    intro: 'Minimalist web framework for Node.js used to build RESTful endpoints and middleware authentication.',
+    cvRecommendation: 'See Product CRUD and full-stack projects in the CV.',
+  },
+  'REST APIs': {
+    category: 'API Architecture',
+    intro: 'Standardized client-server communication with clean status codes, JWT auth, and structured JSON payloads.',
+    cvRecommendation: 'Detailed across Travelis Rwanda Ltd, City of Kigali, and IDA Technology in the CV.',
+  },
+  React: {
+    category: 'Frontend Library',
+    intro: 'Odile’s go-to library for building modular component systems, interactive state workflows, and modern SPAs.',
+    cvRecommendation: 'Featured in NTD Build & Design Solutions, Finance Tracker, and the portfolio codebase.',
+  },
+  'React Native': {
+    category: 'Mobile Framework',
+    intro: 'Cross-platform native mobile app development sharing core React component architecture.',
+    cvRecommendation: 'Explore mobile projects and certifications in the CV.',
+  },
+  'Next.js': {
+    category: 'Full-stack Framework',
+    intro: 'Production React framework used for server-side rendering, static generation, and typed dashboards.',
+    cvRecommendation: 'See the Irondo ry’Umwuga final-year AI surveillance dashboard in the CV.',
+  },
+  Flutter: {
+    category: 'Mobile Framework',
+    intro: 'Google’s UI toolkit used with Dart to craft Fundi Mobile at Travelis Rwanda Ltd and Farmer Trading App.',
+    cvRecommendation: 'Read the Fundi Mobile internship profile in the updated CV.',
+  },
+  Dart: {
+    category: 'Programming Language',
+    intro: 'Client-optimized object-oriented language driving Odile’s Flutter mobile development.',
+    cvRecommendation: 'See mobile application experience and code repositories in the CV.',
+  },
+  Python: {
+    category: 'Programming Language',
+    intro: 'Core language for backend architectures, automation, data structures, and Solvit Africa training.',
+    cvRecommendation: 'Comprehensive coursework, training, and backend projects documented in the CV.',
+  },
+  JavaScript: {
+    category: 'Programming Language',
+    intro: 'Modern ES6+ JavaScript used across frontend apps, interactive DOM experiences, and Node backends.',
+    cvRecommendation: 'Verified across commercial and academic projects in the CV.',
+  },
+  TypeScript: {
+    category: 'Programming Language',
+    intro: 'Typed JavaScript providing compile-time type safety across complex React and Next.js applications.',
+    cvRecommendation: 'See final-year project and modern frontend implementations in the CV.',
+  },
+  PostgreSQL: {
+    category: 'Relational Database',
+    intro: 'Relational database management for structured data models, foreign keys, indexing, and ORM mapping.',
+    cvRecommendation: 'Refer to Travelis Rwanda Ltd and Django project sections in the CV.',
+  },
+  MongoDB: {
+    category: 'NoSQL Database',
+    intro: 'Document-oriented database for flexible JSON-like schemas and MERN stack applications.',
+    cvRecommendation: 'See full-stack project details in the CV.',
+  },
+  Figma: {
+    category: 'Design & Prototyping',
+    intro: 'UI/UX design tool for wireframing, layout systems, user flow design, and design-to-code translation.',
+    cvRecommendation: 'Review design and agile prototyping methodologies in the CV.',
+  },
+  Git: {
+    category: 'Version Control',
+    intro: 'Branching, code reviews, rebasing, and collaborative workflow management across team repos.',
+    cvRecommendation: 'Explore github.com/OdileMas and production collaboration in the CV.',
+  },
+  Agile: {
+    category: 'Methodology',
+    intro: 'Iterative sprint cycles, daily standups, and cross-functional team delivery honed across internships.',
+    cvRecommendation: 'Outlined across City of Kigali and Travelis Rwanda experience in the CV.',
+  },
+};
 
 export const experience = [
   {
     period: '2026 — Present',
-    role: 'Developer Intern',
-    org: 'Travelis Rwanda',
+    role: 'Software Developer Intern',
+    org: 'Travelis Rwanda Ltd',
     place: 'Kigali',
     current: true,
-    points: ['Working in the development team on the design, development and maintenance of the company’s software products.'],
+    points: [
+      'Working as a software developer intern on Fundi Mobile, a mobile & web platform connecting customers to nearby construction technicians and artisans (fundis) according to their specific repair and building problems.',
+      'Developed proximity-based discovery, category-specific problem intake (plumbing, electrical, masonry, carpentry), and direct technician matching workflows to streamline service dispatch.',
+      'Collaborated with the engineering team on RESTful API design, database schemas, and testing across mobile and web platforms in an Agile environment.',
+    ],
   },
   {
     period: '2026',
@@ -106,7 +223,7 @@ export const education = [
     period: '2022 — 2026',
     title: 'BSc, Software Engineering',
     org: 'University of Rwanda',
-    note: 'Software development, networking, embedded systems, IoT and data analytics.',
+    note: 'Software development, networking, embedded systems, IoT and data analytics. Graduating October 2026.',
   },
   {
     period: '2018 — 2021',
@@ -132,9 +249,27 @@ export const toolkit = [
   { label: 'Practice', items: ['Git', 'Agile', 'Figma', 'Testing & debugging'] },
 ];
 
-export const categories = ['All', 'Full-stack', 'Frontend', 'Backend', 'Mobile'];
+export const categories = ['All', 'Mobile', 'Full-stack', 'Frontend', 'Backend'];
 
 export const projects = [
+  {
+    slug: 'fundi-mobile',
+    title: 'Fundi Mobile (Travelis Rwanda Ltd)',
+    summary: 'Connecting customers to nearby construction technicians & artisans tailored to their specific repair and building needs.',
+    category: 'Mobile',
+    year: '2026',
+    team: 'Travelis Rwanda Ltd · Internship',
+    code: 'https://github.com/OdileMas',
+    stack: ['Flutter', 'React', 'REST APIs', 'PostgreSQL', 'Geolocation'],
+    overview:
+      'Fundi Mobile is an on-demand marketplace developed at Travelis Rwanda Ltd to connect households and companies with nearby verified construction technicians (plumbing, electrical, masonry, carpentry). It eliminates the hassle of finding reliable artisans and enables direct problem-based matchmaking.',
+    contributions: [
+      'Developed customer-to-technician discovery and proximity matching workflows.',
+      'Designed category-specific problem intake flows to accurately diagnose customer needs.',
+      'Collaborated on RESTful backend endpoints, state management, and cross-platform UI components.',
+    ],
+    featured: true,
+  },
   {
     slug: 'ntd-build-design',
     title: 'NTD Build & Design Solutions',

@@ -72,13 +72,12 @@ function Resume() {
           <div>
             <SectionHead label="Curriculum Vitae" title="The full document" />
             <p className="lede cv-card__text reveal">
-              Two pages covering everything above plus technical skills and languages. References are available
-              on request.
+              Two pages covering recent production work at Travelis Rwanda Ltd (Fundi Mobile), Solvit Africa, City of Kigali, plus technical proficiencies in Django, React, Flutter, and databases.
             </p>
-            <p className="cv-card__file reveal">{CV_FILENAME} · PDF · 2 pages</p>
+            <p className="cv-card__file reveal">{CV_FILENAME} · PDF · 2 pages · Updated 2026</p>
             <div className="resume-actions reveal">
               <Pill to={CV_URL} variant="accent" icon="down" download={CV_FILENAME}>
-                Download CV
+                Download Updated CV
               </Pill>
             </div>
           </div>

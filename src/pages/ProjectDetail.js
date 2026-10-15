@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { projects } from '../data';
 import { Label, Pill, ArrowIcon } from '../components/ui';
+import SkillModal from '../components/SkillModal';
 import usePageTitle from '../hooks/usePageTitle';
 import NotFound from './NotFound';
 import './ProjectDetail.css';
 
 function ProjectDetail() {
   const { slug } = useParams();
+  const [selectedSkill, setSelectedSkill] = useState(null);
   const index = projects.findIndex((p) => p.slug === slug);
   const project = projects[index];
   usePageTitle(project ? project.title : 'Not found');
@@ -115,12 +118,18 @@ function ProjectDetail() {
               ))}
             </ol>
 
-            <Label className="reveal case-body__stack-label">Built with</Label>
+            <Label className="reveal case-body__stack-label">Built with (click to view CV recommendations)</Label>
             <div className="case-body__stack reveal">
               {stack.map((s) => (
-                <span key={s} className="chip">
+                <button
+                  type="button"
+                  key={s}
+                  className="chip chip--clickable"
+                  onClick={() => setSelectedSkill(s)}
+                  title={`View details and CV recommendation for ${s}`}
+                >
                   {s}
-                </span>
+                </button>
               ))}
             </div>
           </div>
@@ -138,6 +147,8 @@ function ProjectDetail() {
           </span>
         </div>
       </Link>
+
+      <SkillModal skillName={selectedSkill} onClose={() => setSelectedSkill(null)} />
     </>
   );
 }
