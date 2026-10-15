@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { projects, categories, GITHUB } from '../data';
 import PageHero from '../components/PageHero';
 import ProjectCard from '../components/ProjectCard';
+import SkillModal from '../components/SkillModal';
 import { TextLink } from '../components/ui';
 import usePageTitle from '../hooks/usePageTitle';
 import './Projects.css';
@@ -9,6 +10,7 @@ import './Projects.css';
 function Projects() {
   usePageTitle('Projects');
   const [filter, setFilter] = useState('All');
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
   const counts = useMemo(() => {
     const c = { All: projects.length };
@@ -29,7 +31,7 @@ function Projects() {
             Things I’ve <span className="hl">built</span> so far.
           </>
         }
-        intro="Team and personal projects across web, backend and mobile. Open any card for what it does, my role and the stack — plus live demos where they exist."
+        intro="Commercial, team and personal projects across web, backend and mobile. Open any card for what it does, my role and the stack — plus live demos where they exist."
       />
 
       <section className="panel">
@@ -52,18 +54,20 @@ function Projects() {
 
           <div className="projects-grid" key={filter}>
             {shown.map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} />
+              <ProjectCard key={p.slug} project={p} index={i} onSelectSkill={setSelectedSkill} />
             ))}
           </div>
 
           <div className="projects-more">
-            <p>More experiments and coursework live on GitHub.</p>
+            <p>More experiments, open-source work and coursework live on GitHub.</p>
             <TextLink to={GITHUB} external>
               github.com/OdileMas
             </TextLink>
           </div>
         </div>
       </section>
+
+      <SkillModal skillName={selectedSkill} onClose={() => setSelectedSkill(null)} />
     </>
   );
 }

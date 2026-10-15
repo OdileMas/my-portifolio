@@ -4,7 +4,7 @@ import './ProjectCard.css';
 
 // Card linking to a project's case-study page. Projects without a
 // screenshot get a typographic cover so the grid stays consistent.
-function ProjectCard({ project, index, large = false }) {
+function ProjectCard({ project, index, large = false, onSelectSkill }) {
   const { slug, title, summary, category, year, image, stack, live } = project;
 
   return (
@@ -33,7 +33,26 @@ function ProjectCard({ project, index, large = false }) {
         <p className="pcard__summary">{summary}</p>
         <div className="pcard__tags">
           {stack.slice(0, 4).map((t) => (
-            <span key={t} className="chip">
+            <span
+              key={t}
+              className={`chip ${onSelectSkill ? 'chip--clickable' : ''}`}
+              role={onSelectSkill ? 'button' : undefined}
+              tabIndex={onSelectSkill ? 0 : undefined}
+              onClick={(e) => {
+                if (onSelectSkill) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onSelectSkill(t);
+                }
+              }}
+              onKeyDown={(e) => {
+                if (onSelectSkill && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onSelectSkill(t);
+                }
+              }}
+            >
               {t}
             </span>
           ))}

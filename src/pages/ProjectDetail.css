@@ -42,9 +42,12 @@
 }
 
 .case-hero__title {
-  margin-top: 20px;
-  font-size: clamp(44px, 7.6vw, 112px);
-  max-width: 1100px;
+  margin-top: 18px;
+  font-size: clamp(32px, 4.8vw, 54px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  max-width: 960px;
 }
 
 .case-hero__summary {
